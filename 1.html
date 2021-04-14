@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width:100%;
+				
+				position: absolutev;
+				height: 155px;
+				overflow: hidden;
+			}
+			div p{
+				position: absolute;
+				top:0;
+				left:50%;
+				transform:translateX(-50%)
+			}
+			div img{
+				height: 155px;
+			}
+			div p:nth-child(3) img{
+				filter:blur(3px);
+			}
+			div p:nth-child(4) img{
+				filter:blur(4px);
+			}
+			div p:nth-child(5) img{
+				filter:blur(5px);
+			}
+			div p:nth-child(6) img{
+				filter:blur(6px);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<p><img src="img/1.png" alt=""></p>
+			<p><img src="img/2.png" alt=""></p>
+			<p><img src="img/3.png" alt=""></p>
+			<p><img src="img/4.png" alt=""></p>
+			<p><img src="img/5.png" alt=""></p>
+			<p><img src="img/6.png" alt=""></p>
+		</div>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	$("div").mousemove(function(e){
+				var w=$("div").width()
+				var x=e.pageX 
+				var rate=(x-w/2)/100
+				console.log(rate);
+				$("div p img").each(function(index,item){
+					$(item).css({
+						transform:"translateX("+(rate*index)+"px)",
+						filter:"blur("+(rate*(index-2.5))+"px)"
+					})
+				})
+			})
+	</script>
+</html>
